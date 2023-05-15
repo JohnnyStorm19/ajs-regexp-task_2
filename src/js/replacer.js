@@ -1,10 +1,11 @@
 export default function replacer(phone) {
-  if (phone[0] === '+') {
-    const regexp = /[-\s)(]/g;
-    return phone.replace(regexp, '');
+  let phoneNumber = phone;
+  let regexp;
+  if (phoneNumber[0] === '+') {
+    regexp = /[-\s)(]/g;
+  } else {
+    phoneNumber = phoneNumber.replace('8', '+7');
+    regexp = /[-\s)(]/g;
   }
-  // eslint-disable-next-line no-param-reassign
-  phone = phone.replace('8', '+7');
-  const regexp = /[-\s)(]/g;
-  return phone.replace(regexp, '');
+  return phoneNumber.replace(regexp, '');
 }
